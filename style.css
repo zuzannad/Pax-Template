@@ -10,10 +10,11 @@ body {
 a {
     color: #7c8ca0;
     text-decoration: none;
+    transition: .4s;
 }
 
 a:hover {
-    opacity: 0.85;
+    opacity: 0.8;
 }
 
 /*Images*/
@@ -313,12 +314,88 @@ a.btn.btn-default {
 
 /* Section opinion */
 .opinion {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20vh 0;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center;
+    align-content: center; */
+    /* margin: 15vh auto; */
+    width: 100%;
+    height: 60vh;
 }
 
+
+
+.slider {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+    max-width: 60%;
+    position: relative;
+    margin: 15vh auto;
+    height: 60vh;
+}
+
+.main-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.main-quote.active-opinion {
+    z-index: 1;
+}
+
+.main-quote img,
+.main-quote blockquote {
+    position: relative;
+    left: -6rem;
+    /* opacity: 0; */
+}
+
+
+
+/* animacja slajdów */
+.main-quote {
+    opacity: 0;
+    transition: 0.4s all;
+}
+
+.main-quote img {
+    left: -3rem;
+    opacity: 0;
+    transition: 2s left, 2s opacity;
+}
+
+.main-quote blockquote {
+    left: -3rem;
+    opacity: 0;
+    transition: 2s 1s left, 2s 1s opacity;
+}
+
+/* aktywny slide zmienia właściwości elementów */
+
+.main-quote.main-quote.active-opinion {
+    opacity: 1;
+}
+
+.main-quote.main-quote.active-opinion img {
+    left: 0;
+    opacity: 1;
+}
+
+.main-quote.main-quote.active-opinion blockquote {
+    left: 0;
+    opacity: 1;
+}
+
+/* Arrows */
 div.arrow {
     width: 30px;
     height: 30px;
@@ -326,33 +403,69 @@ div.arrow {
     border-radius: 50%;
     text-align: center;
     font-size: 1.55rem;
+    cursor: pointer;
+    z-index: 2;
+    overflow: hidden;
 }
 
-.slider {
+div.arrow.right {
+    left: auto;
+    right: 0;
+}
+
+.div.arrow.left:before,
+.div.arrow.right:before {
+    content: '<';
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    max-width: 60%;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    color: #fff;
+    text-indent: 0;
 }
 
-.main-quote {
-    width: 75%;
-    text-align: center;
+.div.arrow.right:before {
+    content: '>';
 }
 
-.dots {
+/* Dots */
+.slider-dots {
     display: flex;
     width: 10%;
     justify-content: space-around;
     margin-top: 8vh;
+    z-index: 2;
+    position: relative;
+    left: 0;
+    bottom: 1rem;
 }
 
-.dots span {
-    width: 15px;
-    height: 15px;
+.slider-dots span {
+    width: 2rem;
+    height: 2rem;
     border: 1px solid #7c8ca0;
     border-radius: 50%;
+    text-indent: -999px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.slider-dots span:before {
+    content: '';
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    width: 2.2rem;
+    height: 2.2rem;
+    transition: 0.5s all;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
 /* Section team */
