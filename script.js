@@ -19,6 +19,8 @@ class Slider {
         this.prev = null; //przycisk prev
         this.next = null; //przycisk next
         this.dots = []; //przyciski kropek
+
+        this.generateSlider();
     }
 
     generateSlider() {
@@ -40,5 +42,51 @@ class Slider {
         this.slides = document.querySelectorAll('main-quote');
         //wygenerowaliśmy kontener ze slajdami, wstawiamy go więc do slidera
         this.slider.appendChild(slidesCnt);
+
+        this.createPreviousAndNext();
+    }
+
+    createPreviousAndNext() {
+        this.prev = document.createElement('div');
+        this.prev.classList.add('slider-button');
+        this.prev.classList.add('slider-prev-button');
+        this.prev.textContent = '&lsaquo;';
+        this.prev.addEventListener('click', this.slidePrev.bind(this));
+
+        this.next = document.createElement('div');
+        this.next.classList.add('slider-button');
+        this.next.classList.add('slider-next-button');
+        this.next.textContent = '&rsaquo;';
+        this.next.addEventListener('click', this.slideNext.bind(this));
+
+        const nav = document.createElement('div');
+        nav.classList.add('slider-nav');
+        nav.appendChild(this.prev);
+        nav.appendChild(this.next);
+        this.slider.appendChild(nav);
+    }
+
+    createDots() {
+        const ulDots = document.createElement('ul');
+        ulDots.classList.add('slider-dots');
+
+        for (let i = 0; i < this.slides.length; i++) {
+            const li = document.createElement('li');
+            li.classList.add('slider-dots-element');
+
+            const btn = document.createElement('button');
+            btn.classList.add('slider-dot');
+            btn.type = 'button';
+
+            btn.addEventListener('click', function () {
+                this.changeSlide(i);
+            }.bind(this));
+
+            li.appendChild(btn);
+
+            ulDots.appendChild(li);
+
+            this.dots.push(li);
+        }
     }
 }
