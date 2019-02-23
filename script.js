@@ -21,6 +21,7 @@ class Slider {
         this.dots = []; //przyciski kropek
 
         this.generateSlider();
+        this.changeSlide(this.currentSlide);
     }
 
     generateSlider() {
@@ -97,7 +98,7 @@ class Slider {
         this.slider.appendChild(ulDots);
     }
 
-    changeSlide() {
+    changeSlide(index) { // metoda zmieniająca slajd
         [].forEach.call(this.slides, function (slide) {
             slide.classList.remove('main-quote.active-opinion');
         });
@@ -110,6 +111,22 @@ class Slider {
 
         this.dots[index].classList.add('slider-dots-element-active');
         this.currentSlide = index;
+    }
+
+    slidePrev() {
+        this.currentSlide--;
+        if (this.currentSlide < 0) {
+            this.currentSlide = this.slides.length - 1;
+        }
+        this.changeSlide(currentSlide);
+    }
+
+    slideNext() {
+        this.currentSlide++;
+        if (this.currentSlide > this.slides.length - 1) {
+            this.currentSlide = 0;
+        }
+        this.changeSlide(currentSlide);
     }
 }
 
