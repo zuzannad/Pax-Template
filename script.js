@@ -12,7 +12,7 @@
 class Slider {
     constructor(elementSelector) {
         this.currentSlide = 0; //aktualny slide
-        this.sliderSelector = elemSelector; //selektor elementu który zamienimy na slider
+        this.sliderSelector = elementSelector; //selektor elementu który zamienimy na slider
         this.elem = null; //tutaj pobierzemy element który zamienimy na slider
         this.slider = null; //tutaj wygenerujemy slider
         this.slides = null; //tutaj pobierzemy slajdy
@@ -26,24 +26,27 @@ class Slider {
     generateSlider() {
         //pobieramy element, który zamienimy na slider
         this.slider = document.querySelector(this.sliderSelector);
-        this.slider.classList.add = 'slider';
+        this.slider.classList.add('slider');
         //tworzymy kontener dla slajdów
         const slidesCnt = document.createElement('div');
         slidesCnt.classList.add('slider-ctn');
         //pobieramy element slajdów
         this.slides = this.slider.children;
+        console.log(this.slides);
         //to jest żywa kolekcja, więc przy przeniesieniu każdego slajda
         //jej długość maleje
         while (this.slides.length) {
             this.slides[0].classList.add('main-quote');
+            slidesCnt.appendChild(this.slides[0]);
         }
-        slidesCnt.appendChild(this.slides[0]);
+
         //musimy na nowo pobrać slajdy, bo powyższa kolekcja jest już pusta
-        this.slides = document.querySelectorAll('main-quote');
+        this.slides = slidesCnt.querySelectorAll('.main-quote');
         //wygenerowaliśmy kontener ze slajdami, wstawiamy go więc do slidera
         this.slider.appendChild(slidesCnt);
 
         this.createPreviousAndNext();
+        this.createDots();
     }
 
     createPreviousAndNext() {
@@ -71,12 +74,14 @@ class Slider {
         ulDots.classList.add('slider-dots');
 
         for (let i = 0; i < this.slides.length; i++) {
+
             const li = document.createElement('li');
             li.classList.add('slider-dots-element');
 
             const btn = document.createElement('button');
             btn.classList.add('slider-dot');
             btn.type = 'button';
+            btn.innerText = i + 1;
 
             btn.addEventListener('click', function () {
                 this.changeSlide(i);
@@ -88,5 +93,24 @@ class Slider {
 
             this.dots.push(li);
         }
+
+        this.slider.appendChild(ulDots);
+    }
+
+    changeSlide() {
+        [].forEach.call(this.slides, function (slide) {
+            slide.classList.remove('main-quote.active-opinion');
+        });
+
+        this.slides[index].classList.add('main-quote.active-opinion');
+
+        this.dots.forEach(dot, function (dot) {
+            dot.classList.remove('slider-dots-element-active');
+        })
+
+        this.dots[index].classList.add('slider-dots-element-active');
+        this.currentSlide = index;
     }
 }
+
+const slide = new Slider('.opinion');
