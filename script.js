@@ -19,6 +19,7 @@ class Slider {
         this.prev = null; //przycisk prev
         this.next = null; //przycisk next
         this.dots = []; //przyciski kropek
+        this.generateDots = true;
 
         this.generateSlider();
         this.changeSlide(this.currentSlide);
@@ -33,7 +34,7 @@ class Slider {
         slidesCnt.classList.add('slider-ctn');
         //pobieramy element slajdów
         this.slides = this.slider.children;
-        console.log(this.slides);
+        console.log(this.slides); // DOTĄD JEST DOBRZE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! // 
         //to jest żywa kolekcja, więc przy przeniesieniu każdego slajda
         //jej długość maleje
         while (this.slides.length) {
@@ -45,9 +46,44 @@ class Slider {
         this.slides = slidesCnt.querySelectorAll('.main-quote');
         //wygenerowaliśmy kontener ze slajdami, wstawiamy go więc do slidera
         this.slider.appendChild(slidesCnt);
-
+        console.log(this.slider);
+        console.log(this.currentSlide);
         this.createPreviousAndNext();
         this.createDots();
+    }
+
+    slidePrev() {
+        this.currentSlide--;
+        if (this.currentSlide < 0) {
+            this.currentSlide = this.slides.length - 1;
+        }
+        this.changeSlide(this.currentSlide);
+    }
+
+    slideNext() {
+        this.currentSlide++;
+        if (this.currentSlide > this.slides.length - 1) {
+            this.currentSlide = 0;
+        }
+        this.changeSlide(this.currentSlide);
+    }
+
+    changeSlide(index) { // metoda zmieniająca slajd
+        [].forEach.call(this.slides, function (slide) {
+            slide.classList.remove('active-opinion');
+        });
+
+        this.slides[index].classList.add('active-opinion');
+
+        if (this.generateDots) {
+            this.dots.forEach(function (dot) {
+                dot.classList.remove('slider-dots-element-active');
+            })
+
+            this.dots[index].classList.add('slider-dots-element-active');
+        }
+
+        this.currentSlide = index;
     }
 
     createPreviousAndNext() {
@@ -98,36 +134,9 @@ class Slider {
         this.slider.appendChild(ulDots);
     }
 
-    changeSlide(index) { // metoda zmieniająca slajd
-        [].forEach.call(this.slides, function (slide) {
-            slide.classList.remove('main-quote.active-opinion');
-        });
 
-        this.slides[index].classList.add('main-quote.active-opinion');
 
-        this.dots.forEach(dot, function (dot) {
-            dot.classList.remove('slider-dots-element-active');
-        })
 
-        this.dots[index].classList.add('slider-dots-element-active');
-        this.currentSlide = index;
-    }
-
-    slidePrev() {
-        this.currentSlide--;
-        if (this.currentSlide < 0) {
-            this.currentSlide = this.slides.length - 1;
-        }
-        this.changeSlide(currentSlide);
-    }
-
-    slideNext() {
-        this.currentSlide++;
-        if (this.currentSlide > this.slides.length - 1) {
-            this.currentSlide = 0;
-        }
-        this.changeSlide(currentSlide);
-    }
 }
 
-const slide = new Slider('.opinion');
+const slide = new Slider('.slides');

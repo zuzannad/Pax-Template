@@ -381,7 +381,7 @@ a.btn.btn-default {
 
 /* aktywny slide zmienia właściwości elementów */
 
-.main-quote.main-quote.active-opinion {
+/* .main-quote.main-quote.active-opinion {
     opacity: 1;
 }
 
@@ -391,6 +391,20 @@ a.btn.btn-default {
 }
 
 .main-quote.main-quote.active-opinion blockquote {
+    left: 0;
+    opacity: 1;
+} */
+
+.main-quote.active-opinion {
+    opacity: 1;
+}
+
+.main-quote.active-opinion img {
+    left: 0;
+    opacity: 1;
+}
+
+.main-quote.active-opinion blockquote {
     left: 0;
     opacity: 1;
 }
