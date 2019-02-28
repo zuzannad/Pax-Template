@@ -20,12 +20,14 @@ class Slider {
         this.next = null; //przycisk next
         this.dots = []; //przyciski kropek
         this.generateDots = true;
+        this.generatePrevNext = true;
 
         this.generateSlider();
         this.changeSlide(this.currentSlide);
     }
 
     generateSlider() {
+
         //pobieramy element, który zamienimy na slider
         this.slider = document.querySelector(this.sliderSelector);
         this.slider.classList.add('slider');
@@ -58,6 +60,7 @@ class Slider {
             this.currentSlide = this.slides.length - 1;
         }
         this.changeSlide(this.currentSlide);
+        console.log(this.currentSlide);
     }
 
     slideNext() {
@@ -84,19 +87,23 @@ class Slider {
         }
 
         this.currentSlide = index;
+        console.log(this.currentSlide);
     }
 
     createPreviousAndNext() {
-        this.prev = document.createElement('div');
+        this.prev = document.createElement('button');
+        this.prev.type = 'button';
         this.prev.classList.add('slider-button');
         this.prev.classList.add('slider-prev-button');
-        this.prev.textContent = '&lsaquo;';
+        this.prev.textContent = '<';
+        console.log('zrobil sie przycisk poprzedni');
         this.prev.addEventListener('click', this.slidePrev.bind(this));
 
-        this.next = document.createElement('div');
+        this.next = document.createElement('button');
+        this.next.type = 'button';
         this.next.classList.add('slider-button');
         this.next.classList.add('slider-next-button');
-        this.next.textContent = '&rsaquo;';
+        this.next.textContent = '>';
         this.next.addEventListener('click', this.slideNext.bind(this));
 
         const nav = document.createElement('div');
@@ -133,9 +140,6 @@ class Slider {
 
         this.slider.appendChild(ulDots);
     }
-
-
-
 
 }
 
