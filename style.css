@@ -199,9 +199,11 @@ a.btn.btn-default {
     margin: 0 auto;
     padding-bottom: 6vh;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .feature-box {
+    width: 30vh;
     max-width: 20%;
     margin: 0 2vh;
     text-align: center;
@@ -542,4 +544,19 @@ footer {
     background-color: #0046A0;
     color: #fff;
     padding: 6vh 0;
+}
+
+div.arrow .fa-arrow-up {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 3rem;
+    position: fixed;
+    z-index: 3;
+    bottom: 5vh;
+    right: 5vh;
+    background-color: #FC2953;
+    color: white;
+    font-size: 1.5rem;
 }
