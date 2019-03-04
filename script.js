@@ -1,18 +1,41 @@
+class MenuHamburger {
+    constructor(elementMenu) {
+        this.menu = document.querySelector(elementMenu);
+
+    }
+}
+
+const menuHamburger = new MenuHamburger('.menu-items');
+
 class ArrowTop {
     constructor(elementArrow) {
         this.arrow = document.querySelector(elementArrow);
         this.arrowVisible = false;
 
-        window.addEventListener('scroll', this.showArrow.bind(this));
+        window.addEventListener('scroll', this.countScroll.bind(this));
         this.arrow.addEventListener('click', this.toTheTop.bind(this));
     }
 
-    showArrow() {
+    countScroll() {
         const scrollValue = window.scrollY;
         if (scrollValue > (window.innerHeight / 2)) {
-            this.arrow.style.display = "block";
+            this.arrowVisible = true;
+            this.showArrow();
         } else {
-            this.arrow.style.display = "none";
+            this.arrowVisible = false;
+            this.hideArrow();
+        }
+    }
+
+    showArrow() {
+        if (this.arrowVisible) {
+            this.arrow.style.display = 'block';
+        }
+    }
+
+    hideArrow() {
+        if (!this.arrowVisible) {
+            this.arrow.style.display = 'none';
         }
     }
 
@@ -119,23 +142,17 @@ class Slider {
         ulDots.classList.add('slider-dots');
 
         for (let i = 0; i < this.slides.length; i++) {
-
             const li = document.createElement('li');
             li.classList.add('slider-dots-element');
-
             const btn = document.createElement('button');
             btn.classList.add('slider-dot');
             btn.type = 'button';
             btn.innerText = i + 1;
-
             btn.addEventListener('click', function () {
                 this.changeSlide(i);
             }.bind(this));
-
             li.appendChild(btn);
-
             ulDots.appendChild(li);
-
             this.dots.push(li);
         }
 
