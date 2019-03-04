@@ -413,7 +413,7 @@ div.slider-ctn {
     text-align: center;
     font-size: 1.15rem;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
     overflow: hidden;
     color: #7c8ca0;
     position: relative;
@@ -433,7 +433,7 @@ div.slider-ctn {
     width: 20%;
     justify-content: space-around;
     /* margin-top: 8vh; */
-    z-index: 2;
+    z-index: 1;
     position: relative;
     left: 0;
     bottom: 0;
@@ -546,17 +546,23 @@ footer {
     padding: 6vh 0;
 }
 
-div.arrow .fa-arrow-up {
+div.arrow {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     text-align: center;
     line-height: 3rem;
     position: fixed;
-    z-index: 3;
+    z-index: 1;
     bottom: 5vh;
     right: 5vh;
-    background-color: #FC2953;
+    background-color: rgba(252, 41, 83, 0.74);
     color: white;
     font-size: 1.5rem;
+    transition: 0.4s;
+    display: none;
+}
+
+div.arrow:hover {
+    background-color: rgba(252, 41, 83, 1);
 }
