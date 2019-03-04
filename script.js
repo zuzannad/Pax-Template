@@ -1,24 +1,42 @@
-// const windowHeight = window.innerHeight;
+class ArrowTop {
+    constructor(elementArrow) {
+        this.arrow = document.querySelector(elementArrow);
+        this.arrowVisible = false;
 
-// console.log(windowHeight);
+        window.addEventListener('scroll', this.showArrow.bind(this));
+        this.arrow.addEventListener('click', this.toTheTop.bind(this));
+    }
 
-// const returnScrollValue = function () {
-//     const scrollValue = window.scrollY;
-//     console.log(scrollValue);
-// }
+    showArrow() {
+        const scrollValue = window.scrollY;
+        if (scrollValue > (window.innerHeight / 2)) {
+            this.arrow.style.display = "block";
+        } else {
+            this.arrow.style.display = "none";
+        }
+    }
 
-// document.addEventListener('scroll', returnScrollValue);
+    toTheTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+}
+
+const arrowTop = new ArrowTop('div.arrow');
+
 
 class Slider {
     constructor(elementSelector) {
-        this.currentSlide = 0; //aktualny slide
-        this.sliderSelector = elementSelector; //selektor elementu który zamienimy na slider
-        this.elem = null; //tutaj pobierzemy element który zamienimy na slider
-        this.slider = null; //tutaj wygenerujemy slider
-        this.slides = null; //tutaj pobierzemy slajdy
-        this.prev = null; //przycisk prev
-        this.next = null; //przycisk next
-        this.dots = []; //przyciski kropek
+        this.currentSlide = 0;
+        this.sliderSelector = elementSelector;
+        this.elem = null;
+        this.slider = null;
+        this.slides = null;
+        this.prev = null;
+        this.next = null;
+        this.dots = [];
         this.generateDots = true;
         this.generatePrevNext = true;
 
@@ -27,29 +45,17 @@ class Slider {
     }
 
     generateSlider() {
-
-        //pobieramy element, który zamienimy na slider
         this.slider = document.querySelector(this.sliderSelector);
         this.slider.classList.add('slider');
-        //tworzymy kontener dla slajdów
         const slidesCnt = document.createElement('div');
         slidesCnt.classList.add('slider-ctn');
-        //pobieramy element slajdów
         this.slides = this.slider.children;
-        console.log(this.slides); // DOTĄD JEST DOBRZE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! // 
-        //to jest żywa kolekcja, więc przy przeniesieniu każdego slajda
-        //jej długość maleje
         while (this.slides.length) {
             this.slides[0].classList.add('main-quote');
             slidesCnt.appendChild(this.slides[0]);
         }
-
-        //musimy na nowo pobrać slajdy, bo powyższa kolekcja jest już pusta
         this.slides = slidesCnt.querySelectorAll('.main-quote');
-        //wygenerowaliśmy kontener ze slajdami, wstawiamy go więc do slidera
         this.slider.appendChild(slidesCnt);
-        console.log(this.slider);
-        console.log(this.currentSlide);
         this.createPreviousAndNext();
         this.createDots();
     }
@@ -60,7 +66,6 @@ class Slider {
             this.currentSlide = this.slides.length - 1;
         }
         this.changeSlide(this.currentSlide);
-        console.log(this.currentSlide);
     }
 
     slideNext() {
@@ -71,7 +76,7 @@ class Slider {
         this.changeSlide(this.currentSlide);
     }
 
-    changeSlide(index) { // metoda zmieniająca slajd
+    changeSlide(index) {
         [].forEach.call(this.slides, function (slide) {
             slide.classList.remove('active-opinion');
         });
@@ -82,12 +87,9 @@ class Slider {
             this.dots.forEach(function (dot) {
                 dot.classList.remove('slider-dots-element-active');
             })
-
             this.dots[index].classList.add('slider-dots-element-active');
         }
-
         this.currentSlide = index;
-        console.log(this.currentSlide);
     }
 
     createPreviousAndNext() {
@@ -96,7 +98,6 @@ class Slider {
         this.prev.classList.add('slider-button');
         this.prev.classList.add('slider-prev-button');
         this.prev.textContent = '<';
-        console.log('zrobil sie przycisk poprzedni');
         this.prev.addEventListener('click', this.slidePrev.bind(this));
 
         this.next = document.createElement('button');
@@ -140,7 +141,6 @@ class Slider {
 
         this.slider.appendChild(ulDots);
     }
-
 }
 
 const slide = new Slider('.slides');
