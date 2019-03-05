@@ -2,6 +2,9 @@ class MenuHamburger {
     constructor(elementMenu) {
         this.menu = document.querySelector(elementMenu);
 
+        // makeHamburger() {
+
+        // }
     }
 }
 
