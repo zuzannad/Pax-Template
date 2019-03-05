@@ -68,10 +68,6 @@ a.brand {
     align-items: center;
 }
 
-/* .menu-items li {
-    margin: 0 4px;
-} */
-
 .menu-items li a {
     padding: 15px 25px;
     color: #5d6981;
@@ -85,16 +81,15 @@ a.brand {
     border: 1px solid #9fabba;
 }
 
+
 .fab {
     border: 1px solid;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     text-align: center;
-
     font-size: 18px;
     line-height: 40px;
-    /* padding: 15px 25px; */
 }
 
 .fab.fa-facebook-f {
@@ -284,7 +279,7 @@ a.btn.btn-default {
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    width: 50%;
+    width: 47%;
 }
 
 .text-info p {
@@ -296,8 +291,9 @@ a.btn.btn-default {
 }
 
 .info img {
-    width: 50%;
+    width: 37%;
 }
+
 
 .work .btn.price {
     display: block;
@@ -314,23 +310,14 @@ a.btn.btn-default {
     margin: 2vh auto;
 }
 
-/* Section opinion */
-/* .opinion {
-    display: flex;
-    /* flex-direction: column;
-    align-items: center;
-    align-content: center;
-    margin: 15vh auto; */
-/* width: 100%;
-height: 60vh;
-} */
+/*Slider*/
 
 .slides.slider {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 80%;
+    max-width: 65%;
     position: relative;
     margin: 10vh auto;
     height: 60vh;
@@ -361,7 +348,6 @@ div.slider-ctn {
 .main-quote blockquote {
     position: relative;
     left: -6rem;
-    /* opacity: 0; */
 }
 
 /* animacja slajdów */
@@ -382,8 +368,6 @@ div.slider-ctn {
     transition: 2s 1s left, 2s 1s opacity;
 }
 
-/* aktywny slide zmienia właściwości elementów */
-
 .main-quote.active-opinion {
     opacity: 1;
 }
@@ -401,13 +385,15 @@ div.slider-ctn {
 /* Arrows */
 
 .slider-nav {
-    width: 100%;
+    width: 110%;
+    position: relative;
 }
 
 .slider-button {
     width: 6vh;
     height: 6vh;
-    border: 1px solid #7c8ca0;
+    border: 1px solid #cecece;
+    box-shadow: 0px 0px 25px 4px #cecece;
     background-color: #FCFCFC;
     border-radius: 50%;
     text-align: center;
@@ -416,14 +402,14 @@ div.slider-ctn {
     z-index: 1;
     overflow: hidden;
     color: #7c8ca0;
-    position: relative;
-    left: 0;
-    margin-left: 90%;
+    position: absolute;
+    right: 0;
+    /* margin-left: 90%; */
 }
 
 .slider-button.slider-prev-button {
-    right: 0;
-    left: auto;
+    right: auto;
+    left: 0;
     margin-left: 0;
 }
 
@@ -432,7 +418,6 @@ div.slider-ctn {
     display: flex;
     width: 20%;
     justify-content: space-around;
-    /* margin-top: 8vh; */
     z-index: 1;
     position: relative;
     left: 0;
@@ -444,7 +429,8 @@ div.slider-ctn {
 button.slider-dot {
     width: 1.5rem;
     height: 1.5rem;
-    border: 1px solid #aaa;
+    border: 1px solid #cecece;
+    box-shadow: 0px 0px 22px 4px #cecece;
     border-radius: 50%;
     text-indent: -999px;
     overflow: hidden;
@@ -494,21 +480,21 @@ button.slider-dot:focus {
     font-size: 2.8rem;
     font-weight: 700;
     margin-top: 15vh;
-    margin-bottom: 3vh;
+    margin-bottom: 2vh;
 }
 
 .team p {
     color: #7c8ca0;
     font-size: 1.5rem;
     margin-top: 0;
-    margin-bottom: 12vh;
+    margin-bottom: 8vh;
 }
 
 .team-info {
     display: flex;
     text-align: center;
     justify-content: space-around;
-    max-width: 1050px;
+    max-width: 1150px;
 }
 
 .team-info div {
@@ -538,6 +524,13 @@ button.slider-dot:focus {
     margin: 4vh auto;
 }
 
+section.map {
+    background-image: url('img/map/map.png');
+    height: 65vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
 /* Footer */
 footer {
     width: 100%;
@@ -565,4 +558,54 @@ div.arrow {
 
 div.arrow:hover {
     background-color: rgba(252, 41, 83, 1);
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+
+    .menu-items li a {
+        font: 300 17px / 1.4em Roboto, Arial, sans-serif;
+        padding: 25px 17px;
+    }
+
+    .intro-section-header h2 {
+        font-size: 3.8rem;
+    }
+
+    .intro-section-header p {
+        font-size: 1.8rem;
+    }
+
+    .feature-box h3,
+    .team-info div h3 {
+        font-size: 1.65rem;
+    }
+
+
+    .text-info p {
+        font-size: 0.9rem;
+    }
+
+    .slider-button {
+        margin-left: 75%;
+    }
+
+    .feature-boxes,
+    .team-info {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .feature-box,
+    .team-info div {
+        min-width: 35%;
+        margin-top: 8vh;
+    }
+
+    section.intro-video {
+        margin-bottom: 5vh;
+    }
+
+    section.map img {
+        background-image: center;
+    }
 }
