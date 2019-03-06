@@ -1,14 +1,23 @@
 class MenuHamburger {
-    constructor(elementMenu) {
+    constructor(elementMenu, elementHamburger) {
         this.menu = document.querySelector(elementMenu);
+        this.iconHamburger = document.querySelector(elementHamburger);
+        this.menuElements = [...document.querySelectorAll(`${elementMenu} li a`)];
 
-        // makeHamburger() {
+        this.iconHamburger.addEventListener('click', this.showMenu.bind(this));
+        console.log(this.menu);
+    }
 
-        // }
+    showMenu() {
+        this.menu.style.display = 'block';
+        console.log(this.menuElements);
+        this.menuElements.forEach(liElement => {
+            liElement.classList.remove('active');
+        });
     }
 }
 
-const menuHamburger = new MenuHamburger('.menu-items');
+const menuHamburger = new MenuHamburger('.menu-items', '.fas.fa-bars.mobile');
 
 class ArrowTop {
     constructor(elementArrow) {
