@@ -50,6 +50,7 @@ img {
     background-color: #fff;
     width: 100%;
     z-index: 2;
+    height: 12vh;
 }
 
 /*Logo*/
@@ -58,7 +59,19 @@ a.brand {
     margin-right: 2vw;
 }
 
+.mobile a.brand {
+    /* flex-shrink: 0; */
+    margin-right: 2vw;
+}
+
 /*Menu*/
+
+
+
+.mobile a .fa-bars {
+    display: none;
+
+}
 
 .menu-items {
     display: flex;
@@ -80,7 +93,6 @@ a.brand {
     border-radius: 36px;
     border: 1px solid #9fabba;
 }
-
 
 .fab {
     border: 1px solid;
@@ -607,5 +619,48 @@ div.arrow:hover {
 
     section.map img {
         background-image: center;
+    }
+}
+
+@media (max-width: 901px) {
+    .menu-items {
+        display: none;
+
+    }
+
+    .menu-items li {
+        margin-top: 2vh;
+        text-align: center;
+
+    }
+
+    .menu-items li a {
+        font-size: 1.75rem;
+    }
+
+
+    .container.mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+        z-index: 2;
+        /* height: 12vh; */
+    }
+
+    .mobile a .fa-bars {
+        display: block;
+        position: absolute;
+        top: 25%;
+        right: 5%;
+        color: #0149A1;
+        font-size: 2.55rem;
+    }
+
+    .mobile a img {
+        position: absolute;
+        top: 25%;
+        left: 5%;
     }
 }
