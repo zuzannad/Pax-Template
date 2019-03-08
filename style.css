@@ -66,11 +66,8 @@ a.brand {
 
 /*Menu*/
 
-
-
-.mobile a .fa-bars {
+.mobile a.hamburger {
     display: none;
-
 }
 
 .menu-items {
@@ -646,21 +643,26 @@ div.arrow:hover {
         background-color: #fff;
         width: 100%;
         z-index: 2;
-        /* height: 12vh; */
+        height: 15vh;
     }
 
-    .mobile a .fa-bars {
+    .mobile a.hamburger {
         display: block;
         position: absolute;
-        top: 25%;
+        width: 10vh;
+        height: 10vh;
+        top: 35%;
         right: 5%;
+    }
+
+    .mobile a.hamburger i {
         color: #0149A1;
         font-size: 2.55rem;
     }
 
-    .mobile a img {
+    a.brand {
         position: absolute;
-        top: 25%;
+        top: 35%;
         left: 5%;
     }
 }

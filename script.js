@@ -15,9 +15,13 @@ class MenuHamburger {
             liElement.classList.remove('active');
         });
     }
+
+    changeSize() {
+
+    }
 }
 
-const menuHamburger = new MenuHamburger('.menu-items', '.fas.fa-bars.mobile');
+const menuHamburger = new MenuHamburger('.menu-items', 'a.hamburger');
 
 class ArrowTop {
     constructor(elementArrow) {
