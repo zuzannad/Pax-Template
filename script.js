@@ -1,27 +1,45 @@
 class MenuHamburger {
-    constructor(elementMenu, elementHamburger) {
+    constructor(elementMenu, elementHamburger, parent, logo) {
         this.menu = document.querySelector(elementMenu);
         this.iconHamburger = document.querySelector(elementHamburger);
         this.menuElements = [...document.querySelectorAll(`${elementMenu} li a`)];
+        this.parent = document.querySelector(parent);
+        this.logo = document.querySelector(logo);
+        this.iconHamburgerResponsive = null;
 
         this.iconHamburger.addEventListener('click', this.showMenu.bind(this));
-        console.log(this.menu);
+
     }
 
     showMenu() {
-        this.menu.style.display = 'block';
-        console.log(this.menuElements);
+        this.menu.classList.add('hamburger');
         this.menuElements.forEach(liElement => {
             liElement.classList.remove('active');
         });
+        this.customizeContainer();
+        this.iconHamburgerResponsive = this.iconHamburger;
+        this.iconHamburgerResponsive.addEventListener('click', this.hideMenu.bind(this));
     }
 
-    changeSize() {
+    customizeContainer() {
+        this.parent.classList.add('responsive');
+        this.logo.classList.add('burger');
+        this.iconHamburger.classList.add('responsive');
+    }
 
+    hideMenu() {
+        if (this.iconHamburger.classList.contains('responsive')) {
+            this.menu.classList.remove('hamburger');
+            this.parent.classList.remove('responsive');
+            this.logo.classList.remove('burger');
+            this.iconHamburger.classList.remove('responsive');
+            this.iconHamburger = this.iconHamburgerResponsive;
+            this.iconHamburger.addEventListener('click', this.showMenu.bind(this));
+        }
     }
 }
 
-const menuHamburger = new MenuHamburger('.menu-items', 'a.hamburger');
+const menuHamburger = new MenuHamburger('nav .menu-items', 'a.hamburger', '.container.mobile', 'a.brand');
 
 class ArrowTop {
     constructor(elementArrow) {
