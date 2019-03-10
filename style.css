@@ -47,7 +47,7 @@ img {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #fff;
+    background-color: #FCFCFD;
     width: 100%;
     z-index: 2;
     height: 12vh;
@@ -118,8 +118,8 @@ a.brand {
     margin: 0 auto;
 }
 
-.intro-section-header h2 {
-    margin-top: 20vh;
+.intro-section-header h1 {
+    margin-top: 35vh;
     margin-bottom: 3vh;
     color: #0149a1;
     font-weight: 700;
@@ -224,9 +224,14 @@ a.btn.btn-default {
 
 /* Section creativity */
 .creativity {
+    background-image: url('img/creativity.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     position: relative;
     margin: 0;
     padding: 0;
+    height: 50vh;
 }
 
 .creativity .btn.price {
@@ -569,14 +574,14 @@ div.arrow:hover {
     background-color: rgba(252, 41, 83, 1);
 }
 
-@media (max-width: 1024px) and (orientation: landscape) {
+@media (max-width: 1024px) {
 
     .menu-items li a {
         font: 300 17px / 1.4em Roboto, Arial, sans-serif;
         padding: 25px 17px;
     }
 
-    .intro-section-header h2 {
+    .intro-section-header h1 {
         font-size: 3.8rem;
     }
 
@@ -621,7 +626,6 @@ div.arrow:hover {
 
 @media (max-width: 901px) {
     nav .menu-items {
-        /* display: none; */
         position: absolute;
         display: flex;
         flex-direction: column;
@@ -637,7 +641,6 @@ div.arrow:hover {
     nav .menu-items li {
         margin-top: 2vh;
         text-align: center;
-
     }
 
     nav .menu-items li a {
@@ -649,7 +652,7 @@ div.arrow:hover {
         position: fixed;
         top: 0;
         left: 0;
-        background-color: #fff;
+        background-color: #FCFCFD;
         width: 100%;
         z-index: 2;
         height: 15vh;
@@ -672,7 +675,6 @@ div.arrow:hover {
 
     .mobile a.hamburger.responsive {
         top: 10%;
-
     }
 
     .mobile a.hamburger i.fa-bars {
@@ -693,4 +695,106 @@ div.arrow:hover {
     a.brand.burger {
         top: 10%;
     }
+
+    section.map {
+        height: 50vh;
+    }
+}
+
+@media (max-width: 710px) {
+    .intro-section-header h1 {
+        font-size: 3.2rem;
+    }
+
+    .intro-section-header p {
+        font-size: 1.6rem;
+    }
+
+    .btn.btn-primary {
+        box-sizing: border-box;
+        font-size: 1rem;
+        line-height: 55px;
+        width: 220px;
+        height: 55px;
+        border-radius: 30px;
+        padding: 18px 60px;
+    }
+
+    .creativity .btn.price,
+    .work .btn.price,
+    .team .btn.price {
+        box-sizing: border-box;
+        font-size: 1rem;
+        line-height: 55px;
+        width: 220px;
+        height: 55px;
+        border-radius: 30px;
+    }
+
+    .work .btn.price {
+        margin-top: 8vh;
+    }
+
+    section.creativity {
+        height: 40vh;
+    }
+
+
+    section.creativity img {
+        height: 40vh;
+        width: auto;
+    }
+
+    div.feature-box {
+        width: 40%;
+    }
+
+    .feature-box h3,
+    .team-info div h3 {
+        font-size: 1.2rem;
+    }
+
+    .feature-box p,
+    .team-info div p {
+        font-size: 1rem;
+    }
+
+    .work h2 {
+        font-size: 2.2rem;
+    }
+
+    .work p {
+        font-size: 1.3rem;
+    }
+
+    .work .info {
+        flex-direction: column;
+    }
+
+    .info {
+        max-width: 100%;
+    }
+
+    .info img {
+        width: 60%;
+        margin-bottom: 4vh;
+    }
+
+    .text-info {
+        width: 60%;
+    }
+
+    .text-info p {
+        font-size: 1rem;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .feature-box,
+    .team-info div {
+        min-width: 35%;
+        margin-top: 8vh;
+    }
+
 }
